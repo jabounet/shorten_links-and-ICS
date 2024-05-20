@@ -24,7 +24,7 @@ try {
         'links' => "
             CREATE TABLE IF NOT EXISTS links (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                original_url VARCHAR(255) NOT NULL,
+                original_url VARCHAR(5000) NOT NULL,
                 short_code VARCHAR(10) NOT NULL UNIQUE,
                 expiration_date DATETIME DEFAULT NULL,
                 user VARCHAR(255) NOT NULL,
