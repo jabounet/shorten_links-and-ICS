@@ -24,6 +24,6 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
-    # Route everything else to redirect.php with a parameter
+    # Reroutage des autres requêtes
     RewriteRule ^(.*)$ redirect.php?code=$1 [L,QSA]
 </IfModule>
