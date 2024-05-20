@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Protéger config.php
+    <Files "config.php">
+        Order Allow,Deny
+        Deny from all
+    </Files>
+
+    # Rediriger les requêtes à la racine vers index.html
+    RewriteRule ^$ index.html [L]
+    RewriteRule ^index\.html$ - [L]
+
+    # Condition pour les requêtes API
+    RewriteCond %{REQUEST_URI} ^/api [NC]
+    RewriteRule ^api/?$ api.php [L]
+
+    # Condition pour ics_generator.php
+    RewriteCond %{REQUEST_URI} ^/ics_generator [NC]
+    RewriteRule ^ics_generator/?$ ics_generator.php [L]
+
+    # Si la requête ne correspond pas à un fichier ou un répertoire existant
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Route everything else to redirect.php with a parameter
+    RewriteRule ^(.*)$ redirect.php?code=$1 [L,QSA]
+</IfModule>
