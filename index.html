@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Raccourcisseur de liens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2, h3 {
+            color: #333;
+            font-size: 1em;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="url"],
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="url"]:focus,
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jvet - Liens courts</h1>
+        <h3>Ceci est une API de raccourcissement de liens html</h3>
+        <h6>
+            <h2>Introduction</h2>
+            <p>Cette API permet de raccourcir des URLs en générant des liens courts personnalisés. Elle est conçue pour être simple à utiliser et peut être intégrée dans divers projets web.</p>
+        
+            <h2>Utilisation</h2>
+            <ol>
+                <li><strong>Obtenir un token d'accès</strong>: Vous devez obtenir un token d'accès pour utiliser l'API. Ce token peut être obtenu en vous inscrivant sur notre plateforme.</li>
+                <li><strong>Envoyer une requête POST</strong>: Vous devez envoyer une requête POST à l'endpoint de l'API avec les données suivantes au format JSON :</li>
+            </ol>
+            <p></p>
+            <pre><code>{
+            "token": "votre_token_d_acces",
+            "url": "URL_a_raccourcir"
+        }</code></pre>
+            <ol start="3">
+                <li><strong>Réponse de l'API</strong>: L'API renverra une réponse au format JSON qui contient soit l'URL raccourcie, soit un message d'erreur si une erreur survient.</li>
+            </ol>
+        
+            <h2>Exemple</h2>
+            <p>Voici un exemple d'utilisation de l'API en utilisant cURL en ligne de commande :</p>
+            <pre><code>curl -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"token": "votre_token_d_acces", "url": "https://example.com/page"}' \
+          https://jvet.fr/api</code></pre>
+        
+            <h2>Réponses de l'API</h2>
+        
+            <h3>Succès</h3>
+            <pre><code>{
+            "short_url": "https://jvet.fr/abcdef"
+        }</code></pre>
+        
+            <h3>Erreur</h3>
+            <pre><code>{
+            "error": "Message d'erreur correspondant à la situation rencontrée"
+        }</code></pre>
+        
+            <h2>Limitations</h2>
+            <ul>
+                <li>Seules les requêtes POST sont acceptées.</li>
+                <li>Les données doivent être envoyées au format JSON.</li>
+                <li>L'URL doit être valide et accessible.</li>
+            </ul>
+        
+            <h2>Conclusion</h2>
+            <p>Vous pouvez maintenant utiliser cette API pour raccourcir vos URLs dans vos projets web. Pour toute question ou assistance supplémentaire, n'hésitez pas à nous contacter.</p>
+        
+
+
+        </h6>
+
+        <form action="shorten.php" method="post">
+            <label for="url">Entrez l'URL à raccourcir:</label>
+            <input type="url" id="url" name="url" required>
+            <label for="token">Entrez le token:</label>
+            <input type="text" id="token" name="token" required>
+            <button type="submit">Raccourcir</button>
+        </form>
+        <a href="./create_event.php">Créer un évènement</a>
+    </div>
+</body>
+</html>
